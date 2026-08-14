@@ -5,7 +5,7 @@ export const renderCards = (pictures) => {
   const fragment = document.createDocumentFragment();
 
   pictures.forEach((picture) => {
-    // console.log(picture);
+
     const newCardElement = template.cloneNode(true);
 
     const pictureImg = newCardElement.querySelector('.picture__img');
