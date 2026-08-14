@@ -1,3 +1,5 @@
 import { getPhotos, COUNT_PHOTOS } from './data.js';
+import './util.js';
+import { renderCards } from './render-cards.js';
 
-getPhotos(COUNT_PHOTOS);
+renderCards(getPhotos(COUNT_PHOTOS));
