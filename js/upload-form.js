@@ -1,4 +1,6 @@
 import { isValid, resetValidation } from './validation.js';
+// import { resetEffects } from './effect.js';
+// import { resetScale } from './scale.js';
 
 const formNode = document.querySelector('.img-upload__form');
 const modalNode = formNode.querySelector('.img-upload__overlay');
