@@ -1,4 +1,4 @@
-import { DEFAULT_EFFECT, EFFECTS, INIT_SLIDER } from './effects-constants.js';
+import { DEFAULT_EFFECT, EFFECTS, INIT_SLIDER } from './contants.js';
 
 const form = document.querySelector('.img-upload__form');
 const previewImage = form.querySelector('.img-upload__preview img');

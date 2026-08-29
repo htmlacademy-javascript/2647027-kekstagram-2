@@ -1,6 +1,6 @@
 import { isValid, resetValidation } from './validation.js';
-// import { resetEffects } from './effect.js';
-// import { resetScale } from './scale.js';
+import { resetEffects } from './effect.js';
+import { resetScale } from './scale.js';
 
 const formNode = document.querySelector('.img-upload__form');
 const modalNode = formNode.querySelector('.img-upload__overlay');
@@ -23,6 +23,8 @@ const closeUploadModal = () => {
   modalNode.classList.add('hidden');
   formNode.reset();
   resetValidation();
+  resetScale();
+  resetEffects();
 
   document.removeEventListener('keydown', onDocumentKeydown);
 };
