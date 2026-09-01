@@ -1,15 +1,6 @@
 const dataErrorTemplate = document.querySelector('#data-error').content.querySelector('.data-error');
 const FIVE = 5000;
 
-const getRandomInteger = (a, b) => {
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-};
-
-const getRandomElement = (items) => items[getRandomInteger(0, items.length - 1)];
-
 const showDataError = () => {
   const dataErrorNode = dataErrorTemplate.cloneNode(true);
   document.body.append(dataErrorNode);
@@ -19,4 +10,24 @@ const showDataError = () => {
   }, FIVE);
 };
 
-export {getRandomElement, getRandomInteger, showDataError};
+const debounce = (callback, timeoutDelay = 500) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+const throttle = (callback, delayBetweenFrames) => {
+  let lastTime = 0;
+  return (...rest) => {
+    const now = new Date();
+
+    if (now - lastTime >= delayBetweenFrames) {
+      callback.apply(this, rest);
+      lastTime = now;
+    }
+  };
+};
+
+export {showDataError, debounce, throttle};
