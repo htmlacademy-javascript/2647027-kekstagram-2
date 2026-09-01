@@ -69,7 +69,7 @@ slider.on('update', () => {
   sliderValue.value = value;
 });
 
-export const resetEffects = () => {
+const resetEffects = () => {
   removeEffectClasses();
   previewImage.style.filter = '';
   sliderContainer.classList.add('hidden');
@@ -77,3 +77,5 @@ export const resetEffects = () => {
   slider.set(EFFECTS.none.start);
   sliderValue.value = '';
 };
+
+export {resetEffects};
