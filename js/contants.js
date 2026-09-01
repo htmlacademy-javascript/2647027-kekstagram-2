@@ -1,4 +1,4 @@
-export const INIT_SLIDER = {
+const INIT_SLIDER = {
   range: {
     min: 0,
     max: 1,
@@ -9,9 +9,9 @@ export const INIT_SLIDER = {
   tooltips: true
 };
 
-export const DEFAULT_EFFECT = 'none';
+const DEFAULT_EFFECT = 'none';
 
-export const EFFECTS = {
+const EFFECTS = {
   none: {
     min: 0,
     max: 1,
@@ -60,3 +60,5 @@ export const EFFECTS = {
     filter: (value) => `brightness(${value})`,
   },
 };
+
+export {INIT_SLIDER, DEFAULT_EFFECT, EFFECTS};

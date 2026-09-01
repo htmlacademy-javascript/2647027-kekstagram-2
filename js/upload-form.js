@@ -1,17 +1,17 @@
 import { isValid, resetValidation } from './validation.js';
 import { resetEffects } from './effect.js';
 import { resetScale } from './scale.js';
+import { sendFormData } from './api.js';
+import { Messages, showMessage } from './massage.js';
 
-const formNode = document.querySelector('.img-upload__form');
+const formNode = document.querySelector('#upload-select-image');
 const modalNode = formNode.querySelector('.img-upload__overlay');
 const uploadInputNode = formNode.querySelector('#upload-file');
-
 const cancelButtonNode = modalNode.querySelector('#upload-cancel');
 const bodyNode = document.body;
 const hashtagsNode = formNode.querySelector('.text__hashtags');
 const descriptionNode = formNode.querySelector('.text__description');
-
-// const uploadWrapperNode = document.querySelector('.img-upload__field-wrapper');
+const submitButton = formNode.querySelector('.img-upload__submit'); // ❗ добавлено
 
 const openUploadModal = () => {
   modalNode.classList.remove('hidden');
@@ -25,13 +25,10 @@ const closeUploadModal = () => {
   resetValidation();
   resetScale();
   resetEffects();
-
   document.removeEventListener('keydown', onDocumentKeydown);
 };
 
-uploadInputNode.addEventListener('change', () => {
-  openUploadModal();
-});
+uploadInputNode.addEventListener('change', openUploadModal);
 
 cancelButtonNode.addEventListener('click', (evt) => {
   evt.preventDefault();
@@ -44,12 +41,28 @@ function onDocumentKeydown(evt) {
     && document.activeElement !== descriptionNode) {
     evt.preventDefault();
     closeUploadModal();
-    bodyNode.classList.remove('modal-open');
   }
 }
 
 formNode.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+
   if (!isValid()) {
-    evt.preventDefault();
+    return;
   }
+
+  const formData = new FormData(formNode);
+  submitButton.disabled = true;
+
+  sendFormData(formData)
+    .then(() => {
+      closeUploadModal();
+      showMessage(Messages.SUCCESS);
+    })
+    .catch(() => {
+      showMessage(Messages.ERROR);
+    })
+    .finally(() => {
+      submitButton.disabled = false;
+    });
 });

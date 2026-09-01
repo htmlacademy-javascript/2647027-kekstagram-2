@@ -3,7 +3,7 @@ import { openBigPicture } from './open-big-picture.js';
 const template = document.querySelector('#picture').content.querySelector('.picture');
 const gallery = document.querySelector('.pictures');
 
-export const renderCards = (pictures) => {
+const renderCards = (pictures) => {
   const fragment = document.createDocumentFragment();
 
   pictures.forEach((picture) => {
@@ -26,3 +26,5 @@ export const renderCards = (pictures) => {
   });
   gallery.append(fragment);
 };
+
+export {renderCards};
