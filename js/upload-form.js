@@ -2,7 +2,7 @@ import { isValid, resetValidation } from './validation.js';
 import { resetEffects } from './effect.js';
 import { resetScale } from './scale.js';
 import { sendFormData } from './api.js';
-import { Messages, showMessage } from './massage.js';
+import { Messages, showMessage } from './message.js';
 
 const formNode = document.querySelector('#upload-select-image');
 const modalNode = formNode.querySelector('.img-upload__overlay');

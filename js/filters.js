@@ -20,7 +20,7 @@ const filterRandom = (photos) => {
 
 const filterDiscussed = (photos) => [...photos].sort((a, b) => b.comments.length - a.comments.length);
 
-const getSortedPhotos = (filterType, photos) => {
+const renderFilteredPhotos = (filterType, photos) => {
   let sortedPhotos;
   switch (filterType) {
     case 'default':
@@ -38,8 +38,7 @@ const getSortedPhotos = (filterType, photos) => {
   renderCards(sortedPhotos);
 };
 
-// Оборачиваем getSortedPhotos в debounce
-const debouncedFilter = debounce(getSortedPhotos, 500);
+const debouncedFilter = debounce(renderFilteredPhotos, 500);
 
 const onFilterClick = (evt) => {
   const filterType = evt.target.id.replace('filter-', '');
@@ -54,7 +53,6 @@ const onFilterClick = (evt) => {
   evt.target.classList.add('img-filters__button--active');
   currentFilter = filterType;
 
-  // ✅ вызываем debouncedFilter, а не getSortedPhotos
   debouncedFilter(currentFilter, allPhotos);
 };
 

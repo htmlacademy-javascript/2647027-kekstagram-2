@@ -1,6 +1,4 @@
-// big-picture.js
-
-// -------------------- Поиск элементов --------------------
+const COMMENTS_STEP = 5;
 const bigPicture = document.querySelector('.big-picture');
 const cancelButton = bigPicture.querySelector('.big-picture__cancel');
 const img = bigPicture.querySelector('.big-picture__img img');
@@ -11,8 +9,6 @@ const caption = bigPicture.querySelector('.social__caption');
 const commentsList = bigPicture.querySelector('.social__comments');
 const commentsLoader = bigPicture.querySelector('.comments-loader');
 
-// -------------------- Константы и переменные --------------------
-const COMMENTS_STEP = 5;
 let currentComments = [];
 let commentsShownCount = 0;
 
